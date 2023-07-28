@@ -1,4 +1,4 @@
-from ..models.kneset_member import KnesetMember, MpId
+from models.kneset_member import KnesetMember, MpId
 
 class KnesetMemberRepository():
 

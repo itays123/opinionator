@@ -1,6 +1,6 @@
-from ..models.kneset_member import MpId
-from ..models.topic import TopicId
-from ..models.opinion import Opinion, OpinionWithTopicName
+from models.kneset_member import MpId
+from models.topic import TopicId
+from models.opinion import Opinion
 
 class OpinionRepository():
 

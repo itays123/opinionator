@@ -1,6 +1,8 @@
-from flask import abort, request
+from flask import Blueprint, abort, request
 from models.opinion import Opinion, OpinionType
-from .. import app, opinionService
+from inject import opinionService
+
+opinionApi = Blueprint('opinionApi', __name__)
 
 def getOpinionDataFromRequest():
     data = request.json
@@ -10,11 +12,11 @@ def getOpinionDataFromRequest():
         abort(422)
     return opinionType, source
 
-@app.post('/api/opinion/<mkId>/<topicId>')
+@opinionApi.post('/api/opinion/<mkId>/<topicId>')
 def upsertTopic(mkId, topicId):
     (opinionType, source)= getOpinionDataFromRequest()
     return opinionService.upsert(Opinion(mkId, topicId, opinionType, source))
 
-@app.delete('/api/opinion/<mkId>/<topicId>')
+@opinionApi.delete('/api/opinion/<mkId>/<topicId>')
 def deleteTopic(mkId, topicId):
     return opinionService.delete(mkId, topicId)

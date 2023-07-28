@@ -1,4 +1,4 @@
-from ..models.topic import Topic, TopicId
+from models.topic import Topic, TopicId
 
 class TopicRepository():
 

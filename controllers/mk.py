@@ -1,19 +1,21 @@
-from flask import abort, request
+from flask import Blueprint, abort, request
 from models.kneset_member import KnesetMember
-from .. import app, mkService
+from inject import mkService
 
-@app.get('/api/mk')
+mkApi = Blueprint('mkApi', __name__)
+
+@mkApi.get('/api/mk')
 def get_all_mk():
     return mkService.get_all()
 
-@app.get('/api/mk/<id>')
+@mkApi.get('/api/mk/<id>')
 def get_mk_by_id(id):
     mk = mkService.get_by_id(id)
     if (mk == None):
         abort(404)
     return mk
 
-@app.get('/api/search')
+@mkApi.get('/api/search')
 def search_mks():
     query = request.args.get('query')
     if (query == None):
@@ -29,16 +31,16 @@ def getDataFromRequest():
         abort(422)
     return KnesetMember(name, partyName, personalInfo)
 
-@app.post('/api/mk')
+@mkApi.post('/api/mk')
 def insert_mk():
     mk = getDataFromRequest()
     return mkService.insert(mk)
 
-@app.patch('/api/mk/<id>')
+@mkApi.patch('/api/mk/<id>')
 def update_mk(id):
     mk = getDataFromRequest()
     return mkService.update(id, mk)
 
-@app.delete('/api/mk/<id>')
+@mkApi.delete('/api/mk/<id>')
 def delete_mk(id):
     return mkService.delete(id)

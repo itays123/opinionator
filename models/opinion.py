@@ -1,6 +1,6 @@
 from enum import Enum
-from kneset_member import MpId
-from topic import TopicId
+from models.kneset_member import MpId
+from models.topic import TopicId
 
 OpinionType = Enum('OpinionType', ['STRONGLY OPPOSES', 'OPPOSES', 'NEUTRAL', 'SUPPORTS', 'STRONGLY SUPPORTS'])
 
