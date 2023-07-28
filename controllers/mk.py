@@ -1,5 +1,4 @@
 from flask import abort, request
-
 from models.kneset_member import KnesetMember
 from .. import app, mkService
 
