@@ -9,3 +9,11 @@ class Topic():
         openid+=1 
         self.topicName = topicName
         self.description = description
+
+    @property
+    def topicName(self):
+        return self.topicName
+    
+    @property
+    def description(self):
+        return self.description

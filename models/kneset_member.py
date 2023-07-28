@@ -11,3 +11,15 @@ class KnesetMember():
         self.mpName = mpName
         self.partyName = partyName
         self.presonalInfo = presonalInfo
+    
+    @property
+    def mpName(self):
+        return self.mpName
+    
+    @property
+    def partyName(self):
+        return self.partyName
+    
+    @property
+    def personalInfo(self):
+        return self.personalInfo

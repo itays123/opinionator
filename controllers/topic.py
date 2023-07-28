@@ -10,10 +10,15 @@ def get_all_topics():
 
 @topicApi.get('/api/topic/<id>')
 def get_topic_by_id(id):
-    topic = topicService.get_by_id(id)
-    if (topic == None):
+    (topic, opinions) = topicService.get_by_id(id)
+    if (None in (topic, opinions)):
         abort(404)
-    return topic
+    return {
+        'topicId': id,
+        'topicName': topic.topicName,
+        'description': topic.description,
+        'opinions': opinions
+    }
 
 def getTopicDataFromRequest():
     data = request.json

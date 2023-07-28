@@ -10,10 +10,16 @@ def get_all_mk():
 
 @mkApi.get('/api/mk/<id>')
 def get_mk_by_id(id):
-    mk = mkService.get_by_id(id)
-    if (mk == None):
+    (mk, opinions) = mkService.get_by_id(id)
+    if (None in (mk, opinions)):
         abort(404)
-    return mk
+    return {
+        'mpId': id,
+        'mpName': mk.mpName,
+        'partyName': mk.partyName,
+        'personalInfo': mk.personalInfo,
+        'opinions': opinions
+    }
 
 @mkApi.get('/api/search')
 def search_mks():
