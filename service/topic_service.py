@@ -6,7 +6,7 @@ from repository.opinion_repository import OpinionRepository
 
 OpinionatedTopic = NewType('OpinionatedTopic', (Topic, list[Opinion]))
 
-class KnesetMemberService():
+class TopicService():
 
     def __init__(self, topicRepo: TopicRepository, opinionRepo: OpinionRepository) -> None:
         self.topicRepo = topicRepo
