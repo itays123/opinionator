@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-slate-100;
+    }
+    * {
+        @apply text-gray-700;
+        direction: rtl;
+    }
+}
+
+@layer components {
+    .list-item-title {
+        @apply text-2xl font-medium text-gray-900;
+    }
+}
