@@ -14,16 +14,12 @@ def get_all_mk():
 
 @mkApi.get('/api/mk/<id>')
 def get_mk_by_id(id):
-    (mk, opinions) = mkService.get_by_id(id)
+    mk, opinions = mkService.get_by_id(id)
     if (None in (mk, opinions)):
         abort(404)
-    return {
-        'mpId': id,
-        'mpName': mk.mpName,
-        'partyName': mk.partyName,
-        'personalInfo': mk.personalInfo,
-        'opinions': opinions
-    }
+    json = mk.to_json()
+    json['opinions']=[opinion.to_json() for opinion in opinions]
+    return json
 
 @mkApi.get('/api/search')
 def search_mks():

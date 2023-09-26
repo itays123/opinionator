@@ -11,13 +11,13 @@ class OpinionRepository():
         """
         Returns all opinions saved on topic
         """
-        return [opinion for opinion in opinions if opinion.topicId == topicId]
+        return [opinion for opinion in opinions if opinion.topicId == int(topicId)]
     
     def get_all_of_mk(self, mpId: MpId) -> list[Opinion]:
         """
         Returns all opinions saved of mk
         """
-        return [opinion for opinion in opinions if opinion.mpId == mpId]
+        return [opinion for opinion in opinions if opinion.mpId == int(mpId)]
     
     def upsert(self, mpId: MpId, topicId: TopicId, opinion: Opinion) -> None:
         """

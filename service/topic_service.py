@@ -22,7 +22,7 @@ class TopicService():
         """
         Returns individual topic info, including opinions
         """
-        topic = self.mkRepo.get_by_id(topicId)
+        topic = self.topicRepo.get_by_id(topicId)
         if (topic == None):
             return None
         opinions = self.opinionRepo.get_all_of_mk(topicId) # should contain mk name

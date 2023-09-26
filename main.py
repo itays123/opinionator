@@ -11,9 +11,11 @@ app.register_blueprint(mkApi)
 app.register_blueprint(topicApi)
 app.register_blueprint(opinionApi)
 
+"""
 @app.errorhandler(404)
-def redirectTo404():
+def redirectTo404(err):
     return redirect(url_for('404'))
+"""
 
 if __name__ == '__main__':
     app.run()

@@ -39,7 +39,7 @@ class KnesetMember():
     
     @property
     def personalInfo(self):
-        return self.personalInfo
+        return self._presonalInfo
     
     @personalInfo.setter
     def personalInfo(self, personalInfo):

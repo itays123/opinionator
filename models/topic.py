@@ -25,3 +25,10 @@ class Topic():
     @description.setter
     def description(self, description):
         self._description = description
+    
+    def to_json(self):
+        return {
+        'topicId': self.topicId,
+        'topicName': self._topicName,
+        'description': self._description
+    }

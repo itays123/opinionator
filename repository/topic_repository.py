@@ -15,7 +15,7 @@ class TopicRepository():
         """
         Searches for knesset member with particular id
         """
-        results = [topic for topic in topics if topic.topicId == topicId]
+        results = [topic for topic in topics if topic.topicId == int(topicId)]
         if len(results) == 0:
             return None
         return results[0]

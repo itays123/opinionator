@@ -27,6 +27,14 @@ class Opinion():
     @topicId.setter
     def topicId(self, topicId):
         self._topicId = topicId
+    
+    def to_json(self):
+        return {
+            'mpId': self._mpId,
+            'topicId': self._topicId,
+            'opinion': self.opinion.name,
+            'source': self.source
+        }
 
 class OpinionWithTopicName(Opinion):
     def __init__(self, mpId: MpId, topicId: TopicId, topicName: str, opinion: OpinionType, source: str):

@@ -15,10 +15,10 @@ class KnesetMemberRepository():
         """
         Searches for knesset member with particular id
         """
-        results = [mk for mk in mks if mk.mpId == mpId]
-        if len(results) == 0:
-            return None
-        return results[0]
+        for mk in mks:
+            if mk.mpId == int(mpId):
+                return mk
+        return None
     
     def search_by_name(self, name: str) -> list[KnesetMember]:
         """

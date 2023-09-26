@@ -24,7 +24,7 @@ class KnesetMemberService():
         """
         mp = self.mkRepo.get_by_id(mpId)
         if (mp == None):
-            return None
+            return None, None
         opinions = self.opinionRepo.get_all_of_mk(mpId) # should contain topic name
         return mp, opinions
     

@@ -4,21 +4,21 @@ from inject import topicService
 
 topicApi = Blueprint('topicApi', __name__)
 
+def as_json(topics: list[Topic]):
+    return [topic.to_json() for topic in topics]
+
 @topicApi.get('/api/topic')
 def get_all_topics():
-    return topicService.get_all()
+    return as_json(topicService.get_all())
 
 @topicApi.get('/api/topic/<id>')
 def get_topic_by_id(id):
     (topic, opinions) = topicService.get_by_id(id)
     if (None in (topic, opinions)):
         abort(404)
-    return {
-        'topicId': id,
-        'topicName': topic.topicName,
-        'description': topic.description,
-        'opinions': opinions
-    }
+    json = topic.to_json()
+    json['opinions']=[opinion.to_json() for opinion in opinions]
+    return json
 
 def getTopicDataFromRequest():
     data = request.json
