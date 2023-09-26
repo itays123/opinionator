@@ -1,4 +1,5 @@
 from models.kneset_member import KnesetMember, MpId
+from hardcoded_data.dummy_hard_data import *
 
 class KnesetMemberRepository():
 
@@ -6,7 +7,7 @@ class KnesetMemberRepository():
         """
         Returns all knesset members saved
         """
-        raise "Method not implemented"
+        return [benjamin_N, yariv_l, yoav_g, amir_o, aryeh_d, itamar_bg, yair_l, yorai_lh, benjamin_g, gadi_e, gideon_s, yifat_sb, merav_m]
     
     def get_by_id(self, mpId: MpId) -> KnesetMember | None:
         """

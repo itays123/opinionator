@@ -1,5 +1,5 @@
 from models.kneset_member import KnesetMember
-from models.opinion import Opinion
+from models.opinion import Opinion, OpinionType
 from models.topic import Topic
 
 
@@ -28,22 +28,21 @@ yifat_sb = KnesetMember("Yifat Shasha-Biton", "National Unity", "N/A", "some inf
 merav_m = KnesetMember("Merav Michaeli", "Labor", "N/A", "some info here")
 # ----------------- #
 # 13 diffrent opinions
-['STRONGLY OPPOSES', 'OPPOSES', 'NEUTRAL', 'SUPPORTS', 'STRONGLY SUPPORTS']
-benjaminn_edu = Opinion(benjamin_N.id, topic_education.id, 2, "www.google.com")
-yifatsb_edu = Opinion(yifat_sb.id, topic_education.id, 5, "www.google.com")
+benjaminn_edu = Opinion(benjamin_N.mpId, topic_education.topicId, OpinionType.OPPOSES, "www.google.com")
+yifatsb_edu = Opinion(yifat_sb.mpId, topic_education.topicId, OpinionType.STRONGLY_SUPPORTS, "www.google.com")
 
-yarivl_ilpl = Opinion(yariv_l.id, topic_Israeli_Palestinian.id, 5, "www.google.com")
-itamar_ilpl = Opinion(itamar_bg.id, topic_Israeli_Palestinian.id, 1, "www.google.com")
+yarivl_ilpl = Opinion(yariv_l.mpId, topic_Israeli_Palestinian.topicId, OpinionType.STRONGLY_SUPPORTS, "www.google.com")
+itamar_ilpl = Opinion(itamar_bg.mpId, topic_Israeli_Palestinian.topicId, OpinionType.STRONGLY_OPPOSES, "www.google.com")
 
-yoavg_sec = Opinion(yoav_g.id, topic_security.id, 4, "www.google.com")
-benjaming_sec = Opinion(benjamin_g.id, topic_inflation.id, 4, "www.google.com")
+yoavg_sec = Opinion(yoav_g.mpId, topic_security.topicId, OpinionType.SUPPORTS, "www.google.com")
+benjaming_sec = Opinion(benjamin_g.mpId, topic_inflation.topicId, OpinionType.SUPPORTS, "www.google.com")
 
-aryehd_trans = Opinion(aryeh_d.id, topic_Transportation.id, 1, "www.google.com")
-gideons_trans = Opinion(gideon_s.id, topic_Transportation.id, 3, "www.google.com")
+aryehd_trans = Opinion(aryeh_d.mpId, topic_Transportation.topicId, OpinionType.STRONGLY_OPPOSES, "www.google.com")
+gideons_trans = Opinion(gideon_s.mpId, topic_Transportation.topicId, OpinionType.NEUTRAL, "www.google.com")
 
-yairl_iran = Opinion(yair_l.id, topic_iran.id, 4, "www.google.com")
-yorailh_iran = Opinion(yorai_lh.id, topic_iran.id, 2, "www.google.com")
+yairl_iran = Opinion(yair_l.mpId, topic_iran.topicId, OpinionType.SUPPORTS, "www.google.com")
+yorailh_iran = Opinion(yorai_lh.mpId, topic_iran.topicId, OpinionType.OPPOSES, "www.google.com")
 
-gadie_inf = Opinion(gadi_e.id, topic_inflation.id, 1, "www.google.com")
-amiro_inf = Opinion(amir_o.id, topic_inflation.id, 4, "www.google.com")
-meravm_inf = Opinion(merav_m.id, topic_inflation.id, 5, "www.google.com")
+gadie_inf = Opinion(gadi_e.mpId, topic_inflation.topicId, OpinionType.STRONGLY_OPPOSES, "www.google.com")
+amiro_inf = Opinion(amir_o.mpId, topic_inflation.topicId, OpinionType.SUPPORTS, "www.google.com")
+meravm_inf = Opinion(merav_m.mpId, topic_inflation.topicId, OpinionType.STRONGLY_SUPPORTS, "www.google.com")
