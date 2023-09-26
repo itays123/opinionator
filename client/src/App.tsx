@@ -1,5 +1,7 @@
+import { useQuery } from "react-query";
 import MKList from "./components/mk/MKList";
 import { IKnesetMember } from "./types";
+import { getAll } from "./api/mk";
 
 const dummy_mks: IKnesetMember[] = [
   {
@@ -23,10 +25,16 @@ const dummy_mks: IKnesetMember[] = [
 ];
 
 function App() {
+  const { data, isLoading, isError } = useQuery("getAllMKs", getAll);
+
+  if (isLoading) return <div>Loading...</div>;
+
+  if (isError) return <div>An error has occurred</div>;
+
   return (
     <div className="App">
       <h1 className="text-3xl">Hello</h1>
-      <MKList list={dummy_mks} />
+      <MKList list={data as IKnesetMember[]} />
     </div>
   );
 }

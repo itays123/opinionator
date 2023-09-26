@@ -1,12 +1,16 @@
-from flask import Blueprint, abort, request
+from flask import Blueprint, abort, jsonify, request
 from models.kneset_member import KnesetMember
 from inject import mkService
 
 mkApi = Blueprint('mkApi', __name__)
 
+def as_json(mks: list[KnesetMember]):
+    dicts = [mk.to_json() for mk in mks]
+    return jsonify(dicts)
+
 @mkApi.get('/api/mk')
 def get_all_mk():
-    return mkService.get_all()
+    return as_json(mkService.get_all())
 
 @mkApi.get('/api/mk/<id>')
 def get_mk_by_id(id):
@@ -32,10 +36,11 @@ def getDataFromRequest():
     data = request.json
     name = data.get("name")
     partyName = data.get("partyName")
+    role = data.get("role")
     personalInfo = data.get("personalInfo")
     if None in (name, partyName, personalInfo):
         abort(422)
-    return KnesetMember(name, partyName, personalInfo)
+    return KnesetMember(name, partyName, role, personalInfo)
 
 @mkApi.post('/api/mk')
 def insert_mk():

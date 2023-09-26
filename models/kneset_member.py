@@ -44,3 +44,12 @@ class KnesetMember():
     @personalInfo.setter
     def personalInfo(self, personalInfo):
         self._presonalInfo = personalInfo
+    
+    def to_json(self): 
+        return {
+        'mpId': self.mpId,
+        'mpName': self._mpName,
+        'partyName': self._partyName,
+        'role': self._role,
+        'personalInfo': self._presonalInfo,
+    }
