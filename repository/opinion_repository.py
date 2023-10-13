@@ -1,7 +1,7 @@
 from models.kneset_member import MpId
 from models.topic import TopicId
 from models.opinion import Opinion
-from hardcoded_data.dummy_hard_data import *
+from config.dummy_hard_data import *
 
 opinions = [benjaminn_edu, yifatsb_edu, yarivl_ilpl, itamar_ilpl, yoavg_sec, benjaming_sec, aryehd_trans, gideons_trans, yairl_iran, yorailh_iran, gadie_inf, amiro_inf, meravm_inf]
 
