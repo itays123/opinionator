@@ -8,6 +8,7 @@ export interface IKnesetMember {
     mpId: ID;
     mpName: string;
     partyName: string;
+    role: string;
     personalInfo: string;
 }
 
