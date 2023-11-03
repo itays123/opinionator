@@ -8,6 +8,7 @@ export interface IKnesetMember {
     mpId: ID;
     mpName: string;
     partyName: string;
+    role: string;
     personalInfo: string;
 }
 
@@ -46,4 +47,22 @@ export interface IOpinionatedKnesetMember extends IKnesetMember {
 
 export interface IOpinionatedTopic extends IKnesetMember {
     opinions: IOpinionWithMk[]
+}
+
+export type ArrayElement<ArrayType extends readonly unknown[]> = 
+  ArrayType[number]
+
+export const QUERY_OBJECT = ['MK', 'TOPIC', 'OPINION'] as const;
+
+/**
+ * Query subject
+ * consists of an object (mk / predicate / subject),
+ * a predicate (supports / opposed by / ...)
+ * and subjects (on a topic, of an mk)
+ */
+export interface IQuery {
+    queryObject: ArrayElement<typeof QUERY_OBJECT>;
+    opinionQueryPredicate: OpinionType[];
+    mkQuerySubject: Partial<IKnesetMember>;
+    topicQuerySubject: Partial<ITopic>;
 }

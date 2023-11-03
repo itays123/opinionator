@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for
 from controllers.mk import mkApi
 from controllers.opinion import opinionApi
 from controllers.topic import topicApi
+from config.env import debug
 
 app = Flask('server')
 
@@ -18,4 +19,4 @@ def redirectTo404(err):
 """
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=debug)
