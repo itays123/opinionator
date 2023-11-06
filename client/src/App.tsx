@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import MKList from "./components/mk/MKList";
 import { IKnesetMember } from "./types";
 import { getAll } from "./api/mk";
+import QueryField from "./components/qurery/QueryField";
 
 function App() {
   const { data, isLoading, isError } = useQuery<IKnesetMember[]>(
@@ -15,7 +16,15 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="text-3xl">Hello</h1>
+      <div className="flex mx-2">
+        <QueryField
+          field="חברי כנסת"
+          onFieldClick={() => console.log("MK")}
+          options={["ביבי", "גלנט"]}
+          onOptionClick={(option) => console.log(option)}
+        />
+      </div>
+
       {data && <MKList list={data} />}
     </div>
   );
