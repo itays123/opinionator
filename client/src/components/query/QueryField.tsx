@@ -6,6 +6,8 @@ export interface IQueryFieldProps {
   onPick: () => any;
   onDismiss: () => any;
   children?: (emitPicked: Function, dismiss: Function) => ReactNode;
+  className?: string;
+  pickedClassName?: string;
 }
 
 export default function QueryField({
@@ -13,6 +15,8 @@ export default function QueryField({
   onPick,
   onDismiss,
   children,
+  pickedClassName = "",
+  className = "",
 }: IQueryFieldProps) {
   const [picked, setPicked] = useState(false);
   const dismiss = useCallback(() => {
@@ -21,14 +25,12 @@ export default function QueryField({
   }, [onDismiss]);
   return (
     <div
-      className={`cursor-pointer rounded-full shadow-lg flex flex-row items-center px-4 py-2 mx-1 bg-slate-50 ${
-        picked ? "text-primary-600" : ""
-      }`}
+      className={`cursor-pointer rounded-full shadow-lg flex flex-row items-center px-4 py-2 mx-1 my-1 bg-slate-50 ${
+        picked ? pickedClassName : ""
+      } ${className}`}
     >
       {/* Dismiss button */}
-      {picked && (
-        <CancelIcon className="fill-primary-600 ml-1" onClick={dismiss} />
-      )}
+      {picked && <CancelIcon className="ml-1" onClick={dismiss} />}
       {/* Field button */}
       <div
         className="text-inherit select-none"

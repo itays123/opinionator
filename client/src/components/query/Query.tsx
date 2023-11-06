@@ -8,7 +8,7 @@ import QueryPredicate, { PREDICATE_OPTIONS } from "./QueryPredicate";
 export default function Query() {
   const { queryObject, predicateName } = useSnapshot(query);
   return (
-    <div className="flex flex-row items-center py-2">
+    <div className="flex flex-row items-center py-2 flex-wrap">
       <div className="px-2 text-slate-800 text-lg font-bold flex items-center">
         <Search className="fill-slate-800 ml-1" width={24} height={24} />
         מה תרצו לחפש?

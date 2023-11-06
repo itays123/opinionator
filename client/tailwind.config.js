@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       colors: {
         primary: colors.cyan,
+        mk: colors.cyan,
+        opinion: colors.violet,
+        topic: colors.fuchsia,
       },
     },
   },
