@@ -8,10 +8,13 @@ export interface IPredicateOption extends IQueryPredicate {
 
 export default function QueryPredicate({
   field,
+  picked,
   ...pred
-}: Omit<IPredicateOption, "label"> & Pick<IQueryFieldProps, "field">) {
+}: Omit<IPredicateOption, "label"> &
+  Pick<IQueryFieldProps, "field" | "picked">) {
   return (
     <QueryField
+      picked={picked}
       field={field}
       onPick={() => setPredicate(pred)}
       onDismiss={clearPredicate}
@@ -27,7 +30,7 @@ export const PREDICATE_OPTIONS: IPredicateOption[] = [
     label: {
       MK: "התומכים מאוד",
       OPINION: "חיוביות מאוד",
-      TOPIC: "הנתמכים מאוד",
+      TOPIC: "בעלי תמיכה חזקה",
     },
   },
   {
@@ -36,7 +39,7 @@ export const PREDICATE_OPTIONS: IPredicateOption[] = [
     label: {
       MK: "התומכים",
       OPINION: "חיוביות",
-      TOPIC: "הנתמכים",
+      TOPIC: "בעלי תמיכה",
     },
   },
   {
@@ -54,7 +57,7 @@ export const PREDICATE_OPTIONS: IPredicateOption[] = [
     label: {
       MK: "המתנגדים",
       OPINION: "שליליות",
-      TOPIC: "הנתמכים מאוד",
+      TOPIC: "בעלי התנגדות",
     },
   },
   {
@@ -63,7 +66,7 @@ export const PREDICATE_OPTIONS: IPredicateOption[] = [
     label: {
       MK: "המתנגדים מאוד",
       OPINION: "חיוביות מאוד",
-      TOPIC: "הנתמכים מאוד",
+      TOPIC: "בעלי התנגדות חזקה",
     },
   },
 ];

@@ -8,6 +8,7 @@ export interface IQueryFieldProps {
   children?: (emitPicked: Function, dismiss: Function) => ReactNode;
   className?: string;
   pickedClassName?: string;
+  picked?: boolean;
 }
 
 export default function QueryField({
@@ -17,8 +18,9 @@ export default function QueryField({
   children,
   pickedClassName = "",
   className = "",
+  picked: initialPicked = false,
 }: IQueryFieldProps) {
-  const [picked, setPicked] = useState(false);
+  const [picked, setPicked] = useState(initialPicked);
   const dismiss = useCallback(() => {
     setPicked(false);
     onDismiss();

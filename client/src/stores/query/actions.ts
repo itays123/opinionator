@@ -1,5 +1,5 @@
 import query from ".";
-import { IKnesetMember, IQueryPredicate, QueryObject } from "../../types";
+import { IKnesetMember, IQueryPredicate, ITopic, QueryObject } from "../../types";
 
 export function setObject(obj: QueryObject) {
     query.queryObject = obj;
@@ -18,6 +18,10 @@ export function setPredicate(pred: IQueryPredicate) {
 export function clearPredicate() {
     query.predicateName = undefined;
     query.opinionQueryPredicate = undefined;
+    if (query.queryObject !== "MK")
+        query.mkQuerySubject = {};
+    if (query.queryObject !== "TOPIC")
+        query.topicQuerySubject = {};
 }
 
 function updateObjectPropery<T extends object>(obj: T | undefined, property: keyof T, value: T[keyof T]) {
@@ -38,5 +42,13 @@ export function setMKProperty(property: keyof IKnesetMember, field: string) {
 
 export function deleteMKProperty(property: keyof IKnesetMember) {
     query.mkQuerySubject = deleteObjectProperty(query.mkQuerySubject!, property);
+}
+
+export function setTopicProperty(property: keyof ITopic, field: string) {
+    query.topicQuerySubject = updateObjectPropery(query.topicQuerySubject, property, field);
+}
+
+export function deleteTopicProperty(property: keyof ITopic) {
+    query.topicQuerySubject = deleteObjectProperty(query.topicQuerySubject!, property);
 }
 
