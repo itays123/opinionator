@@ -17,7 +17,14 @@ export default function SelectQueryField({
 }: ISelectQueryFieldProps<string>) {
   const selectRef = useRef<HTMLSelectElement>(null);
   return (
-    <QueryField field={field} onPick={() => {}} onDismiss={onDismiss}>
+    <QueryField
+      field={field}
+      onPick={() => {}}
+      onDismiss={() => {
+        selectRef.current!.value = NO_VALUE;
+        onDismiss();
+      }}
+    >
       {(setPicked, dismiss) => (
         <select
           className="text-inherit bg-transparent outline-none"
