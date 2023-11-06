@@ -1,5 +1,5 @@
 import { ReactNode, useCallback, useState } from "react";
-import CancelIcon from "../icons/Cancel";
+import CancelIcon from "../../icons/Cancel";
 
 export interface IQueryFieldProps {
   field: string;

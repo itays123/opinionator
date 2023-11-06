@@ -1,4 +1,4 @@
-import { proxy } from "valtio";
+import { proxy, subscribe } from "valtio";
 import { ArrayElement, IKnesetMember, IOpinion, IQuery, ITopic } from "../../types";
 
 export const QUERY_STATES = ['IDLE', 'LOADING', 'ERROR', 'FETCHED'] as const;
@@ -14,5 +14,8 @@ const query = proxy({
     data: []
 } as IQueryStore)
 
+subscribe(query, () => {
+    console.log(query);
+})
 
 export default query;

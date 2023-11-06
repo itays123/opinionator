@@ -1,6 +1,6 @@
 import { clearObject, setObject } from "../../stores/query/actions";
 import { QueryObject } from "../../types";
-import QueryField from "./QueryField";
+import QueryField from "./field/QueryField";
 
 export interface IQueryObjectFieldProps {
   obj: QueryObject;

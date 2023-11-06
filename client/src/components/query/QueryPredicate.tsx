@@ -1,6 +1,6 @@
 import { clearPredicate, setPredicate } from "../../stores/query/actions";
 import { IQueryPredicate, OpinionType, QueryObject } from "../../types";
-import QueryField, { IQueryFieldProps } from "./QueryField";
+import QueryField, { IQueryFieldProps } from "./field/QueryField";
 
 export interface IPredicateOption extends IQueryPredicate {
   label: Record<QueryObject, string>;
