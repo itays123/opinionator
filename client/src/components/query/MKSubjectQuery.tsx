@@ -21,7 +21,7 @@ export default function MKSubjectQuery({ property }: IMKSubjectQueryField) {
   const field = MK_PROPS_TO_FIELDS[property];
   return field ? (
     <InputQueryField
-      className="text-mk-700"
+      pickedClassName="text-primary-600"
       field={field}
       onInputChange={(value) => {
         setMKProperty(property, value);

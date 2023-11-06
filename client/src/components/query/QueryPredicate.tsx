@@ -15,7 +15,7 @@ export default function QueryPredicate({
       field={field}
       onPick={() => setPredicate(pred)}
       onDismiss={clearPredicate}
-      className="text-opinion-700"
+      pickedClassName="text-primary-600"
     />
   );
 }
