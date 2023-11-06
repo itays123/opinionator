@@ -2,8 +2,8 @@ import { useQuery } from "react-query";
 import MKList from "./components/mk/MKList";
 import { IKnesetMember } from "./types";
 import { getAll } from "./api/mk";
-import QueryField from "./components/qurery/QueryField";
-import SelectQueryField from "./components/qurery/SelectQueryField";
+import QueryField from "./components/query/QueryField";
+import SelectQueryField from "./components/query/SelectQueryField";
 
 function App() {
   const { data, isLoading, isError } = useQuery<IKnesetMember[]>(
