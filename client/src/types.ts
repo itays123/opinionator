@@ -54,6 +54,11 @@ export type ArrayElement<ArrayType extends readonly unknown[]> =
 
 export const QUERY_OBJECT = ['MK', 'TOPIC', 'OPINION'] as const;
 export type QueryObject = ArrayElement<typeof QUERY_OBJECT>;
+
+export interface IQueryPredicate {
+    name: string;
+    value: OpinionType[];
+}
 /**
  * Query subject
  * consists of an object (mk / predicate / subject),

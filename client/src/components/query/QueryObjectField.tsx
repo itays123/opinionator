@@ -1,4 +1,4 @@
-import query from "../../stores/query";
+import { clearObject, setObject } from "../../stores/query/actions";
 import { QueryObject } from "../../types";
 import QueryField from "./QueryField";
 
@@ -16,12 +16,8 @@ export default function QueryObjectField({ obj }: IQueryObjectFieldProps) {
   return (
     <QueryField
       field={MAP_OBJ_TO_FIELD_NAME[obj]}
-      onPick={() => {
-        query.queryObject = obj;
-      }}
-      onDismiss={() => {
-        query.queryObject = undefined;
-      }}
+      onPick={() => setObject(obj)}
+      onDismiss={clearObject}
     />
   );
 }

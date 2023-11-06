@@ -3,9 +3,10 @@ import query from "../../stores/query";
 import QueryObjectField from "./QueryObjectField";
 import { QUERY_OBJECT } from "../../types";
 import Search from "../icons/Search";
+import QueryPredicate, { PREDICATE_OPTIONS } from "./QueryPredicate";
 
 export default function Query() {
-  const snap = useSnapshot(query);
+  const { queryObject, predicateName } = useSnapshot(query);
   return (
     <div className="flex flex-row items-center py-2">
       <div className="px-2 text-slate-800 text-lg font-bold flex items-center">
@@ -14,10 +15,22 @@ export default function Query() {
       </div>
       {QUERY_OBJECT.map(
         (obj) =>
-          (!snap.queryObject || snap.queryObject === obj) && (
+          (!queryObject || queryObject === obj) && (
             <QueryObjectField obj={obj} key={obj} />
           )
       )}
+      {queryObject &&
+        PREDICATE_OPTIONS.map(
+          ({ name, label, value }) =>
+            (!predicateName || predicateName === name) && (
+              <QueryPredicate
+                key={name}
+                name={name}
+                field={label[queryObject]}
+                value={value}
+              />
+            )
+        )}
     </div>
   );
 }
