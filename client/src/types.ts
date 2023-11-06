@@ -53,7 +53,7 @@ export type ArrayElement<ArrayType extends readonly unknown[]> =
   ArrayType[number]
 
 export const QUERY_OBJECT = ['MK', 'TOPIC', 'OPINION'] as const;
-
+export type QueryObject = ArrayElement<typeof QUERY_OBJECT>;
 /**
  * Query subject
  * consists of an object (mk / predicate / subject),
@@ -61,7 +61,7 @@ export const QUERY_OBJECT = ['MK', 'TOPIC', 'OPINION'] as const;
  * and subjects (on a topic, of an mk)
  */
 export interface IQuery {
-    queryObject: ArrayElement<typeof QUERY_OBJECT>;
+    queryObject: QueryObject;
     opinionQueryPredicate: OpinionType[];
     mkQuerySubject: Partial<IKnesetMember>;
     topicQuerySubject: Partial<ITopic>;

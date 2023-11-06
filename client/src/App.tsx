@@ -2,8 +2,7 @@ import { useQuery } from "react-query";
 import MKList from "./components/mk/MKList";
 import { IKnesetMember } from "./types";
 import { getAll } from "./api/mk";
-import QueryField from "./components/query/QueryField";
-import SelectQueryField from "./components/query/SelectQueryField";
+import Query from "./components/query/Query";
 
 function App() {
   const { data, isLoading, isError } = useQuery<IKnesetMember[]>(
@@ -16,20 +15,8 @@ function App() {
   if (isError) return <div>An error has occurred</div>;
 
   return (
-    <div className="App">
-      <div className="flex mx-2">
-        <QueryField
-          field="חברי כנסת"
-          onPick={() => console.log("MK")}
-          onDismiss={() => console.log("not mk")}
-        />
-        <SelectQueryField
-          field="ממפלגת"
-          onOptionClick={(option) => console.log(option)}
-          onDismiss={() => console.log("No party filter")}
-          options={["הליכוד", "העבודה", "יש עתיד"]}
-        />
-      </div>
+    <div className="App px-8">
+      <Query />
 
       {data && <MKList list={data} />}
     </div>

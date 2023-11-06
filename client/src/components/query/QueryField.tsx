@@ -21,7 +21,7 @@ export default function QueryField({
   }, [onDismiss]);
   return (
     <div
-      className={`cursor-pointer rounded-full shadow-lg flex flex-row items-center px-4 py-2 bg-slate-50 ${
+      className={`cursor-pointer rounded-full shadow-lg flex flex-row items-center px-4 py-2 mx-1 bg-slate-50 ${
         picked ? "text-primary-600" : ""
       }`}
     >
