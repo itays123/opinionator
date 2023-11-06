@@ -1,41 +1,47 @@
-import { useState } from "react";
+import { ReactNode, useCallback, useState } from "react";
+import CancelIcon from "../icons/Cancel";
 
-export interface IQueryFieldProps<TOption> {
+export interface IQueryFieldProps {
   field: string;
-  options?: TOption[];
-  onFieldClick: Function;
-  onOptionClick?: (option: TOption) => any;
+  onPick: () => any;
+  onDismiss: () => any;
+  children?: (emitPicked: Function, dismiss: Function) => ReactNode;
 }
 
 export default function QueryField({
   field,
-  options,
-  onFieldClick,
-  onOptionClick = () => {},
-}: IQueryFieldProps<string>) {
-  const [optionsOpen, setOptionsOpen] = useState(false);
+  onPick,
+  onDismiss,
+  children,
+}: IQueryFieldProps) {
+  const [picked, setPicked] = useState(false);
+  const dismiss = useCallback(() => {
+    setPicked(false);
+    onDismiss();
+  }, [onDismiss]);
   return (
     <div
-      className="cursor-pointer px-4 py-2 rounded-full shadow-lg bg-slate-50 flex flex-row"
-      onClick={() => {
-        setOptionsOpen(true);
-        onFieldClick();
-      }}
+      className={`cursor-pointer rounded-full shadow-lg flex flex-row items-center px-4 py-2 ${
+        picked ? "bg-primary-600 text-slate-50" : "bg-slate-50"
+      }`}
     >
-      <span>{field}</span>
-      {options && optionsOpen && (
-        <select
-          className="mx-2"
-          onChange={(event) => {
-            onOptionClick(event.target.value);
-            setOptionsOpen(false);
-          }}
-        >
-          {options.map((option, i) => (
-            <option key={i}>{option}</option>
-          ))}
-        </select>
+      {/* Dismiss button */}
+      {picked && (
+        <CancelIcon className="fill-slate-50 ml-1" onClick={dismiss} />
       )}
+      {/* Field button */}
+      <div
+        className="text-inherit select-none"
+        onClick={() => {
+          if (!children) {
+            setPicked(true);
+            onPick();
+          }
+        }}
+      >
+        {field}
+      </div>
+      {children && children(() => setPicked(true), dismiss)}
     </div>
   );
 }
