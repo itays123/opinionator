@@ -21,13 +21,13 @@ export default function QueryField({
   }, [onDismiss]);
   return (
     <div
-      className={`cursor-pointer rounded-full shadow-lg flex flex-row items-center px-4 py-2 ${
-        picked ? "bg-primary-600 text-slate-50" : "bg-slate-50"
+      className={`cursor-pointer rounded-full shadow-lg flex flex-row items-center px-4 py-2 bg-slate-50 ${
+        picked ? "text-primary-600" : ""
       }`}
     >
       {/* Dismiss button */}
       {picked && (
-        <CancelIcon className="fill-slate-50 ml-1" onClick={dismiss} />
+        <CancelIcon className="fill-primary-600 ml-1" onClick={dismiss} />
       )}
       {/* Field button */}
       <div
