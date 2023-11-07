@@ -3,6 +3,7 @@ import MKList from "./components/mk/MKList";
 import { IKnesetMember } from "./types";
 import { getAll } from "./api/mk";
 import Query from "./components/query/Query";
+import SidebarWrapper from "./components/sidebar/SidebarWrapper";
 
 function App() {
   const { data, isLoading, isError } = useQuery<IKnesetMember[]>(
@@ -15,11 +16,13 @@ function App() {
   if (isError) return <div>An error has occurred</div>;
 
   return (
-    <div className="App px-8">
-      <Query />
+    <SidebarWrapper>
+      <div className="App px-8">
+        <Query />
 
-      {data && <MKList list={data} />}
-    </div>
+        {data && <MKList list={data} />}
+      </div>
+    </SidebarWrapper>
   );
 }
 
