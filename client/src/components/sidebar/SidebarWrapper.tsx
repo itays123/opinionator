@@ -1,17 +1,16 @@
-import { PropsWithChildren, useMemo } from "react";
+import { PropsWithChildren } from "react";
 import { useLayout } from "../../stores/layout";
 import Sidebar from "./Sidebar";
 
 export default function SidebarWrapper({ children }: PropsWithChildren) {
   const { state } = useLayout();
-  const className = useMemo(
-    () => (state === "OPEN" ? "w-1/3 min-w-[300px]" : "w-screen"),
-    [state]
-  );
+  if (state === "CLOSED") return <>{children}</>;
+  if (state === "FULLSCREEN")
+    return <Sidebar className="flex-grow absolute h-full w-full " />;
   return (
     <div className="flex flex-row justify-stretch items-stretch">
-      {state !== "FULLSCREEN" && <div className="w-screen">{children}</div>}
-      {state !== "CLOSED" && <Sidebar className={className} />}
+      <div className="flex-grow">{children}</div>
+      <Sidebar className="w-1/3 min-w-[300px]" />
     </div>
   );
 }
