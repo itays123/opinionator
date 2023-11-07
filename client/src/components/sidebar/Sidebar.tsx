@@ -13,7 +13,8 @@ const ALLOW_OPEN = window.innerWidth > MIN_WINDOW_WIDTH_PX;
 const ICON_SIZE = 24;
 
 export default function Sidebar({ className = "" }: { className?: string }) {
-  const { state, component } = useLayout();
+  const { state, component: Component, componentProps } = useLayout();
+  console.log("Rendering sidebar");
   return (
     <div className={"bg-slate-50 shadow-lg px-3 py-4 " + className}>
       <div className="flex flex-row items-center">
@@ -31,7 +32,7 @@ export default function Sidebar({ className = "" }: { className?: string }) {
           </button>
         )}
       </div>
-      <div className="">{component}</div>
+      <div className="">{Component && <Component {...componentProps} />}</div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import { IKnesetMember } from "../../types";
+import { openSidebar } from "../../stores/layout";
+import MKPage from "../pages/MKPage";
 
 export const MK_PAGE_PREFIX = "/mk/";
 export const NO_ROLE = "N/A";
@@ -15,9 +16,9 @@ export default function MKListItem({
 }: IMKListItemProps) {
   return (
     <div className="px-6 space-y-1 py-4">
-      <Link to={MK_PAGE_PREFIX + mpId}>
+      <button onClick={() => openSidebar(MKPage, { id: mpId })}>
         <span className="text-gray-950 font-bold text-lg">{mpName}</span>
-      </Link>
+      </button>
       <div className="text-gray-700">
         {role !== NO_ROLE && (
           <>
